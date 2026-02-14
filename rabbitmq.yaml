@@ -6,7 +6,7 @@
     ansible.builtin.copy:
       src: rabbitmq
       dest: /etc/yum.repos.d/rabbitmq.repo
-      remote_src: yes
+      
   - name: install rabbitmq server
     ansible.builtin.dnf:
       name: rabbitmq-server
@@ -15,10 +15,11 @@
     community.rabbitmq.rabbitmq_user:
       user: roboshop
       password: roboshop123
-      vhost: /
-      configure_priv: .*
-      read_priv: .*
-      write_priv: .*
+      permissions:
+        - vhost: /
+          configure_priv: .*
+          read_priv: .*
+          write_priv: .*
       state: present
 
   - name: start and enable rabbitmq 
@@ -26,4 +27,3 @@
       name: rabbitmq-server
       state: restarted
       enabled: yes
-      
