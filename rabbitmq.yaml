@@ -12,6 +12,13 @@
     ansible.builtin.dnf:
       name: rabbitmq-server
       state: present
+  
+  - name: start and enable rabbitmq 
+    ansible.builtin.service:
+      name: rabbitmq-server
+      state: restarted
+      enabled: yes
+      
   - name: creating user and password
     community.rabbitmq.rabbitmq_user:
       user: roboshop
@@ -23,8 +30,4 @@
           write_priv: .*
       state: present
 
-  - name: start and enable rabbitmq 
-    ansible.builtin.service:
-      name: rabbitmq-server
-      state: restarted
-      enabled: yes
+  
