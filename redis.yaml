@@ -20,8 +20,8 @@
     #ansible.builtin.lineinfile:
     ansible.builtin.lineinfile:
       path: /etc/redis/redis.conf
-      regexp: 'protected mode'
-      line: 'protected mode no'
+      regexp: 'protected-mode'
+      line: 'protected-mode no'
 
   - name: system daemon reloaded
     ansible.builtin.systemd_service:
