@@ -69,12 +69,13 @@
       name: "{{ item }}"
       executable: pip3.9
     loop:
+    - cryptography
     - PyMySQL
-    #- cryptography
+  
   - name: import shipping data
     community.mysql.mysql_db:
-      name: all
       state: import
+      name: all
       login_host: "{{ MYSQL_HOST }}"
       login_user: root
       login_password: RoboShop@1
