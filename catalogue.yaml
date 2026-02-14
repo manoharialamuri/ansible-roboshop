@@ -78,7 +78,6 @@
 
   - name: system daemon reloaded
     ansible.builtin.systemd_service:
-      state: restarted
       daemon_reload: true
       name: catalogue
 
