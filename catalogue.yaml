@@ -25,7 +25,6 @@
         path: /app
         state: absent
       
-
   - name: create app directory
     ansible.builtin.file:
       path: /app
@@ -52,7 +51,7 @@
       path: /app
 
   - name: copy catalogue service 
-    ansible.builtin.copy:
+    ansible.builtin.template:
       src: catalogue.service 
       dest: /etc/systemd/system/catalogue.service
 
