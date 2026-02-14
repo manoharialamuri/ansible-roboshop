@@ -59,12 +59,6 @@
       daemon_reload: true
       name: shipping
 
-  - name: start and enable catalogue
-    ansible.builtin.service:
-      name: shipping
-      state: restarted
-      enabled: yes
-
   - name: import shipping data
     community.mysql.mysql_db:
       name: all
