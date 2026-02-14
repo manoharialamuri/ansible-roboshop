@@ -2,4 +2,12 @@
   hosts: user
   become: yes
   tasks: 
-  - name:
+  - name: enable nodejs
+    ansible.builtin.command: dnf module enable nodejs:20 -y
+
+  - name: install nodejs
+    ansible.builtin.dnf:
+      name: nodejs
+      state: present
+  
+  
