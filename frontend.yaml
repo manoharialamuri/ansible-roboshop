@@ -1,0 +1,22 @@
+- name: configuring frontend
+  hosts: frontend
+  become: yes
+  tasks:
+  - name: enable nginx
+    ansible.builtin.command: module enable nginx:1.24 -y
+
+  - name: install nginx
+    ansible.builtin.dnf:
+      name: nginx
+      state: present
+
+  - name: start and enable nginx 
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
+      enabled: yes
+  
+  - name: remove html
+    ansible.builtin.command: rm -rf /usr/share/nginx/html/* 
+
+  - 

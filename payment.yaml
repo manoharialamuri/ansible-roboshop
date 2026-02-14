@@ -52,7 +52,7 @@
       chdir: /app
   
   - name: copy systemctl service
-    ansible.builtin.service:
+    ansible.builtin.template:
       src: payment.service
       dest : /etc/systemd/system/payment.service
 
