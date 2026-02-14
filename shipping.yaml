@@ -54,6 +54,11 @@
     args:
       chdir: /app
 
+  - name: create systemctl service
+    ansible.builtin.template:
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service
+
   - name: system daemon reloaded
     ansible.builtin.systemd_service:
       daemon_reload: true
