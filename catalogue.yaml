@@ -1,7 +1,8 @@
 - name: catalogue configure
   hosts: catalogue
   become: yes
-  MONGODB_HOST: mongodb-dev.daws88s.store
+  vars:
+    MONGODB_HOST: mongodb-dev.daws88s.store
   tasks:
   - name: enable nodejs 20
     ansible.builtin.command: dnf module enable nodejs:20 -y
