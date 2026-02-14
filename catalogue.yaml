@@ -19,7 +19,7 @@
       comment: "roboshop system user"
 
   - name: delete app directory
-    nsible.builtin.file:
+    ansible.builtin.file:
         path: /app
         state: absent
       
