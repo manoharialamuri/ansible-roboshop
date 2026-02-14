@@ -1,0 +1,5 @@
+- name: configure user
+  hosts: user
+  become: yes
+  tasks: 
+  - name:
