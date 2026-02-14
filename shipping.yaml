@@ -84,6 +84,8 @@
     - /app/db/schema.sql
     - /app/db/app-user.sql 
     - /app/db/master-data.sql
+    args:
+      chdir: /app
 
   - name: start and enable shipping
     ansible.builtin.service:
