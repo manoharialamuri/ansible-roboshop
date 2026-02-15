@@ -47,7 +47,7 @@
       value: "{{ item.instances[0].private_ip_address }}"
       wait: true
     loop: "{{ ec2_output.results }}"
-    when: action == "craete"
+    # when: action == "craete"
 
   # - name: create r53 records
   #   amazon.aws.route53:
