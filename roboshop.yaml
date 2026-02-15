@@ -1,4 +1,4 @@
-#ansible-playbook -i ivnentory.ini -e "instance='redis','cart','user','shipping','payment','mysql','rabbitmq','frontend'" roboshop.yaml
+#ansible-playbook -i localhost, -e "instance=['redis','cart','user','shipping','payment','mysql','rabbitmq','frontend']" roboshop.yaml
 
 # ansible-playbook -i localhost,   -e '{"instances":["mongodb","catalogue","redis","user","cart","mysql","shipping","rabbitmq","payment","frontend"]}'  -e action=destroy roboshop.yaml
 
@@ -49,20 +49,20 @@
     loop: "{{ ec2_output.results }}"
     when: action == "craete"
 
-  - name: create r53 records
-    amazon.aws.route53:
-      state: present
-      zone: "{{ domain_name }}"
-      record: "roboshop-{{ env}}.{{ domain_name }}" # roboshop-dev.daws88s.store(we are using this as website url)
-      type: A 
-      ttl: 1
-      value: "{{ item.instances[0].public_ip_address }}"
-      wait: true
-      overwrite: true
-    loop: "{{ ec2_output.results }}"
-    when: 
-    - item.item == "frontend"
-    - action == "create"
+  # - name: create r53 records
+  #   amazon.aws.route53:
+  #     state: present
+  #     zone: "{{ domain_name }}"
+  #     record: "roboshop-{{ env}}.{{ domain_name }}" # roboshop-dev.daws88s.store(we are using this as website url)
+  #     type: A 
+  #     ttl: 1
+  #     value: "{{ item.instances[0].public_ip_address }}"
+  #     wait: true
+  #     overwrite: true
+  #   loop: "{{ ec2_output.results }}"
+  #   when: 
+  #   - item.item == "frontend"
+  #   - action == "create"
 
   - name: delete r53 records for frontend
     amazon.aws.route53:
