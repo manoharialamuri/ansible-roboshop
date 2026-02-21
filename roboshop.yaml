@@ -12,9 +12,9 @@
     domain_name: daws88s.store
     action: "create"
     env: dev
-    # instances:
-    # - mongodb
-    # - catalogue
+    instances:
+    - mongodb
+    - catalogue
     
   tasks:
   - name: create ec2 instance
